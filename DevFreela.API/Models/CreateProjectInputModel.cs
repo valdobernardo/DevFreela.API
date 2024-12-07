@@ -8,4 +8,6 @@
         public int IdFreelancer { get; set; }
         public decimal TotalCost { get; set; }
     }
+
+    // teste commit
 }

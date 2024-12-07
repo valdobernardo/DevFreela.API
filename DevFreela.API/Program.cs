@@ -4,11 +4,10 @@ using DevFreela.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.Configure<FreelanceTotalCostConfig>(
     builder.Configuration.GetSection("FreelanceTotalCostConfig")
     );
+// teste
 
 builder.Services.AddScoped<IConfigService, ConfigService>();
 

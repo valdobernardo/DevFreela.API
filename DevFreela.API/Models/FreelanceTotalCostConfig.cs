@@ -5,5 +5,4 @@
         public decimal Minimum { get; set; }
         public decimal Maximum { get; set; }
     }
-    // teste commit
 }

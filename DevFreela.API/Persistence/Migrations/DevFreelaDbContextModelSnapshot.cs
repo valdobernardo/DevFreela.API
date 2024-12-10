@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DevFreela.API.Persistance.Migrations
+namespace DevFreela.API.Persistence.Migrations
 {
     [DbContext(typeof(DevFreelaDbContext))]
     partial class DevFreelaDbContextModelSnapshot : ModelSnapshot
@@ -33,7 +33,7 @@ namespace DevFreela.API.Persistance.Migrations
                     b.Property<DateTime?>("CompletedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("CreateAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -83,7 +83,7 @@ namespace DevFreela.API.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreateAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("IdProject")
@@ -115,7 +115,7 @@ namespace DevFreela.API.Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreateAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -144,7 +144,7 @@ namespace DevFreela.API.Persistance.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("CreateAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -171,7 +171,7 @@ namespace DevFreela.API.Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreateAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("IdSkill")
@@ -201,7 +201,7 @@ namespace DevFreela.API.Persistance.Migrations
                         .IsRequired();
 
                     b.HasOne("DevFreela.API.Entities.User", "Freelancer")
-                        .WithMany("FreeLanceProjects")
+                        .WithMany("FreelanceProjects")
                         .HasForeignKey("IdFreelancer")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -263,7 +263,7 @@ namespace DevFreela.API.Persistance.Migrations
                 {
                     b.Navigation("Comments");
 
-                    b.Navigation("FreeLanceProjects");
+                    b.Navigation("FreelanceProjects");
 
                     b.Navigation("OwnedProjects");
 

@@ -13,6 +13,4 @@ namespace DevFreela.API.Models
         public Project ToEntity()
             => new(Title, Description, IdClient, IdFreelancer, TotalCost);
     }
-
-    
 }

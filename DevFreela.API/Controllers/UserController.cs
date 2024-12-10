@@ -8,16 +8,15 @@ namespace DevFreela.API.Controllers
 {
     [ApiController]
     [Route("api/users")]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly DevFreelaDbContext _context;
-        public UserController(DevFreelaDbContext context)
+        public UsersController(DevFreelaDbContext context)
         {
             _context = context;
         }
 
         [HttpGet("{id}")]
-
         public IActionResult GetById(int id)
         {
             var user = _context.Users
@@ -47,25 +46,23 @@ namespace DevFreela.API.Controllers
             return NoContent();
         }
 
-        //Post api/skills
-        [HttpPost("{id}/Skills")]
-
+        [HttpPost("{id}/skills")]
         public IActionResult PostSkills(int id, UserSkillsInputModel model)
         {
             var userSkills = model.SkillIds.Select(s => new UserSkill(id, s)).ToList();
 
             _context.UserSkills.AddRange(userSkills);
             _context.SaveChanges();
+
             return NoContent();
         }
 
         [HttpPut("{id}/profile-picture")]
-
         public IActionResult PostProfilePicture(int id, IFormFile file)
         {
-            var description = $"File: {file.FileName}, Size; {file.Length}";
+            var description = $"FIle: {file.FileName}, Size: {file.Length}";
 
-            //Processar = Imagem
+            // Processar a imagem
 
             return Ok(description);
         }

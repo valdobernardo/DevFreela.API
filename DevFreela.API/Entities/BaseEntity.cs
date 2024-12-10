@@ -4,12 +4,14 @@
     {
         protected BaseEntity()
         {
-            CreateAt = DateTime.Now;
+            CreatedAt = DateTime.Now;
             IsDeleted = false;
         }
-        public int Id { get; set; }
-        public DateTime CreateAt { get; set; }
-        public bool IsDeleted { get; set; }
+
+        public int Id { get; private set; }
+        public DateTime CreatedAt { get; private set; }
+        public bool IsDeleted { get; private set; }
+
         public void SetAsDeleted()
         {
             IsDeleted = true;

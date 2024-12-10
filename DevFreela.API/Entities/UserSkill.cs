@@ -7,6 +7,7 @@
             IdUser = idUser;
             IdSkill = idSkill;
         }
+
         public int IdUser { get; private set; }
         public User User { get; private set; }
         public int IdSkill { get; private set; }

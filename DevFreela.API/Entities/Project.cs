@@ -56,7 +56,7 @@ namespace DevFreela.API.Entities
                 CompletedAt = DateTime.Now;
             }
         }
-        
+
         public void SetPaymentPending()
         {
             if (Status == ProjectStatusEnum.InProgress)

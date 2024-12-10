@@ -14,7 +14,8 @@ namespace DevFreela.API.Models
             ClientName = clientName;
             FreelancerName = freelancerName;
             TotalCost = totalCost;
-            Comments = comments.Select(c => c.Content).ToList();        }
+            Comments = comments.Select(c => c.Content).ToList();
+        }
 
         public int Id { get; private set; }
         public string Title { get; private set; }
@@ -25,7 +26,7 @@ namespace DevFreela.API.Models
         public string FreelancerName { get; private set; }
         public decimal TotalCost { get; private set; }
         public List<string> Comments { get; private set; }
-        
+
         public static ProjectViewModel FromEntity(Project entity)
             => new(entity.Id, entity.Title, entity.Description,
                 entity.IdClient, entity.IdFreelancer, entity.Client.FullName,

@@ -3,7 +3,6 @@ using DevFreela.API.Models;
 using DevFreela.API.Persistence;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography.X509Certificates;
 
 namespace DevFreela.API.Controllers
 {
@@ -17,10 +16,8 @@ namespace DevFreela.API.Controllers
             _context = context;
         }
 
-
         // GET api/skills
         [HttpGet]
-
         public IActionResult GetAll()
         {
             var skills = _context.Skills.ToList();

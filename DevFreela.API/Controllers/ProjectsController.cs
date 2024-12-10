@@ -17,15 +17,15 @@ namespace DevFreela.API.Controllers
         {
             _context = context;
         }
+
         // GET api/projects?search=crm
         [HttpGet]
-
         public IActionResult Get(string search = "", int page = 0, int size = 3)
         {
             var projects = _context.Projects
                 .Include(p => p.Client)
                 .Include(p => p.Freelancer)
-                .Where(p => !p.IsDeleted && (search == "" || p.Title.Contains(search)))
+                .Where(p => !p.IsDeleted && (search == "" || p.Title.Contains(search) || p.Description.Contains(search)))
                 .Skip(page * size)
                 .Take(size)
                 .ToList();
@@ -50,7 +50,7 @@ namespace DevFreela.API.Controllers
             return Ok(model);
         }
 
-        //POST api/projects
+        // POST api/projects
         [HttpPost]
         public IActionResult Post(CreateProjectInputModel model)
         {
@@ -62,7 +62,7 @@ namespace DevFreela.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = 1 }, model);
         }
 
-        //PUT api/projects/1234
+        // PUT api/projects/1234
         [HttpPut("{id}")]
         public IActionResult Put(int id, UpdateProjectInputModel model)
         {
@@ -81,9 +81,8 @@ namespace DevFreela.API.Controllers
             return NoContent();
         }
 
-        //DELETE api/projects/1234
+        //  DELETE api/projects/1234
         [HttpDelete("{id}")]
-
         public IActionResult Delete(int id)
         {
             var project = _context.Projects.SingleOrDefault(p => p.Id == id);
@@ -100,7 +99,7 @@ namespace DevFreela.API.Controllers
             return NoContent();
         }
 
-        //PUT api/projects/1234/start
+        // PUT api/projects/1234/start
         [HttpPut("{id}/start")]
         public IActionResult Start(int id)
         {
@@ -118,7 +117,7 @@ namespace DevFreela.API.Controllers
             return NoContent();
         }
 
-        //PUT api/projects/1234/complete
+        // PUT api/projects/1234/complete
         [HttpPut("{id}/complete")]
         public IActionResult Complete(int id)
         {
@@ -136,10 +135,9 @@ namespace DevFreela.API.Controllers
             return NoContent();
         }
 
-        //POST api/projects/1234/comments
+        // POST api/projects/1234/comments
         [HttpPost("{id}/comments")]
-
-        public IActionResult PostComments(int id, CreateProjectCommentsInputModel model)
+        public IActionResult PostComment(int id, CreateProjectCommentInputModel model)
         {
             var project = _context.Projects.SingleOrDefault(p => p.Id == id);
 

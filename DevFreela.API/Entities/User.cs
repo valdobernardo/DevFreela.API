@@ -1,6 +1,4 @@
-﻿using DevFreela.API.Controllers;
-
-namespace DevFreela.API.Entities
+﻿namespace DevFreela.API.Entities
 {
     public class User : BaseEntity
     {
@@ -16,7 +14,6 @@ namespace DevFreela.API.Entities
             OwnedProjects = [];
             FreelanceProjects = [];
             Comments = [];
-
         }
 
         public string FullName { get; private set; }

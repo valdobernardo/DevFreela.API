@@ -47,7 +47,6 @@ namespace DevFreela.API.Persistence
                         .WithMany(p => p.Comments)
                         .HasForeignKey(p => p.IdProject)
                         .OnDelete(DeleteBehavior.Restrict);
-
                 });
 
             builder // Cada usuário (User) pode ter muitas habilidades (Skills) por meio da tabela intermediária UserSkill.
@@ -69,8 +68,8 @@ namespace DevFreela.API.Persistence
                     e.HasKey(p => p.Id);
 
                     e.HasOne(p => p.Freelancer)
-                        .WithMany(f => f.FreeLanceProjects)
-                        .HasForeignKey(p => p.IdFreeLancer)
+                        .WithMany(f => f.FreelanceProjects)
+                        .HasForeignKey(p => p.IdFreelancer)
                         .OnDelete(DeleteBehavior.Restrict);
 
                     e.HasOne(p => p.Client)
@@ -79,7 +78,6 @@ namespace DevFreela.API.Persistence
                         .OnDelete(DeleteBehavior.Restrict);
 
                 });
-
 
             base.OnModelCreating(builder);
         }

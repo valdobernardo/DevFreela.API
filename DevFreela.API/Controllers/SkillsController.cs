@@ -2,6 +2,7 @@
 using DevFreela.Application.Services;
 using DevFreela.Core.Entities;
 using DevFreela.Infrastructure.Persistence;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevFreela.API.Controllers
@@ -11,22 +12,24 @@ namespace DevFreela.API.Controllers
     public class SkillsController : ControllerBase
     {
         private readonly ISkillService _service;
-        public SkillsController(ISkillService service)
+        private readonly IMediator _mediator;
+        public SkillsController(ISkillService service, IMediator mediator)
         {
             _service = service;
+            _mediator = mediator;
         }
 
         // GET api/skills
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task <IActionResult> GetAll()
         {
-            var result = _service.GetAll();
+            var result = _mediator.Send(GetAll());
 
             return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var result = _service.GetById(id);
 

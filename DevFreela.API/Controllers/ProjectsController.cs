@@ -1,12 +1,11 @@
-﻿using DevFreela.Application.Commands.CompleteProject;
-using DevFreela.Application.Commands.DeleteProject;
-using DevFreela.Application.Commands.InsertComment;
-using DevFreela.Application.Commands.InsertProject;
-using DevFreela.Application.Commands.StartProject;
-using DevFreela.Application.Commands.UpdateProject;
+﻿using DevFreela.Application.Commands.CommandsProject.CompleteProject;
+using DevFreela.Application.Commands.CommandsProject.DeleteProject;
+using DevFreela.Application.Commands.CommandsProject.InsertComment;
+using DevFreela.Application.Commands.CommandsProject.InsertProject;
+using DevFreela.Application.Commands.CommandsProject.StartProject;
+using DevFreela.Application.Commands.CommandsProject.UpdateProject;
 using DevFreela.Application.Queries.GetAllProjects;
 using DevFreela.Application.Queries.GetProjectById;
-using DevFreela.Application.Services;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,11 +15,9 @@ namespace DevFreela.API.Controllers
     [Route("api/projects")]
     public class ProjectsController : ControllerBase
     {
-        private readonly IProjectService _service;
         private readonly IMediator _mediator;
-        public ProjectsController(IProjectService service, IMediator mediator)
+        public ProjectsController(IMediator mediator)
         {
-            _service = service;
             _mediator = mediator;
         }
 
@@ -28,7 +25,6 @@ namespace DevFreela.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(string search = "")
         {
-            //var result = _service.GetAll();
 
             var query = new GetAllProjectsQuery();
 

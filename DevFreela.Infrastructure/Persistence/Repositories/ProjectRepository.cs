@@ -7,7 +7,7 @@ namespace DevFreela.Infrastructure.Persistence.Repositories
     public class ProjectRepository : IProjectRepository
     {
         private readonly DevFreelaDbContext _context;
-        public ProjectRepository (DevFreelaDbContext context)
+        public ProjectRepository(DevFreelaDbContext context)
         {
             _context = context;
         }
@@ -41,13 +41,13 @@ namespace DevFreela.Infrastructure.Persistence.Repositories
             return projects;
         }
 
-        public async Task<Project> GetById(int id)
+        public async Task<Project?> GetById(int id)
         {
             return await _context.Projects
                 .SingleOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<Project> GetDetailsById(int id)
+        public async Task<Project?> GetDetailsById(int id)
         {
             var project = await _context.Projects
                 .Include(p => p.Client)

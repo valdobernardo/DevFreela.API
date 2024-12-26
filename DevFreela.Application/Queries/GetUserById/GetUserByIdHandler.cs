@@ -2,11 +2,6 @@
 using DevFreela.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DevFreela.Application.Queries.GetUserById
 {
@@ -21,9 +16,9 @@ namespace DevFreela.Application.Queries.GetUserById
         public async Task<ResultViewModel<UserViewModel>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             var user = await _context.Users
-             .Include(u => u.Skills)
-                 .ThenInclude(u => u.Skill)
-             .SingleOrDefaultAsync(u => u.Id == request.Id);
+                .Include(u => u.Skills)
+                .ThenInclude(u => u.Skill)
+                .SingleOrDefaultAsync(u => u.Id == request.Id);
 
             if (user is null)
             {

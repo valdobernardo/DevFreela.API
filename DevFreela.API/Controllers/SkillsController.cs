@@ -1,5 +1,4 @@
 ﻿using DevFreela.Application.Commands.CommandsSkills.InsertSkills;
-using DevFreela.Application.Models;
 using DevFreela.Application.Queries.GetSkillsById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
